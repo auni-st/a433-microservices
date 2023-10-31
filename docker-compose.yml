@@ -1,0 +1,32 @@
+# mendeklarasikan bahwa Docker Compose akan menggunakan versi 3.7
+version: "3.7"
+
+# mendefinisikan service yang terdiri dari item-app dan item-db
+services:
+  # mendeklarasikan bahwa image yang digunakan dalam item-app berasal dari GitHub Packages, 
+  # host port adalah 80, container port adalah 8080, memastikan bahwa item-app berjalan setelah item-db diluncurkan, 
+  # dan menerapkan restart policy always agar container selalu restart ketika terhenti 
+  item-app:
+    image: ghcr.io/auni-st/item-app:v1
+    ports:
+      - 80:8080
+    depends_on:
+      - item-db
+    restart: always
+
+  # mendeklarasikan bahwa image yang digunakan dalam item-db adalah mongo:3 dari Docker Hub,
+  # host port adalah 27017, container port adalah 27017 (port default mongo), 
+  # menggunakan volume bernama app-db dengan target /data/db di container, 
+  # dan menerapkan restart policy always agar container selalu restart ketika terhenti 
+  item-db:
+    image: mongo:3
+    ports:
+      - 27017:27017
+    volumes:
+      - app-db:/data/db
+    restart: always
+
+# mendefinisikan sebuah volume yaitu app-db
+volumes:
+  app-db:
+  

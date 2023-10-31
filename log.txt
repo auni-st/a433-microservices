@@ -1,0 +1,44 @@
+a433-microservices-item-app-1  | 
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=0300afbf5599
+a433-microservices-item-app-1  | > docker-software-delivery@1.0.0 start /app
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] db version v3.6.23
+a433-microservices-item-app-1  | > node ./bin/www
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] git version: d352e6a4764659e0d0350ce77279de3c1f243e5c
+a433-microservices-item-app-1  | 
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+a433-microservices-item-app-1  | NODE_ENV: production
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+a433-microservices-item-app-1  | Connected to database
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] modules: none
+a433-microservices-item-app-1  | GET / 200 246.623 ms - 785
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] build environment:
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+a433-microservices-item-app-1  | GET /javascripts/dist/dist.min.js 304 2.255 ms - -
+a433-microservices-item-app-1  | GET /stylesheets/style.css 200 49.168 ms - 519
+a433-microservices-item-app-1  | GET /api 304 17.716 ms - -
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten]     distarch: x86_64
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.559+0000 I CONTROL  [initandlisten] options: { net: { bindIpAll: true } }
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.560+0000 I -        [initandlisten] Detected data files in /data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.560+0000 I STORAGE  [initandlisten]
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.560+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.560+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem  
+a433-microservices-item-db-1   | 2023-10-31T10:09:27.560+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=2188M,cache_overflow=(file_max=0M),session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),compatibility=(release="3.0",require_max="3.0"),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+a433-microservices-item-db-1   | 2023-10-31T10:09:28.796+0000 I STORAGE  [initandlisten] WiredTiger message [1698746968:796833][1:0x7f00b66eda40], txn-recover: Main recovery loop: starting at 4/4736
+a433-microservices-item-db-1   | 2023-10-31T10:09:28.910+0000 I STORAGE  [initandlisten] WiredTiger message [1698746968:910548][1:0x7f00b66eda40], txn-recover: Recovering log 4 through 5
+a433-microservices-item-db-1   | 2023-10-31T10:09:28.983+0000 I STORAGE  [initandlisten] WiredTiger message [1698746968:983824][1:0x7f00b66eda40], txn-recover: Recovering log 5 through 5
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.040+0000 I STORAGE  [initandlisten] WiredTiger message [1698746969:40340][1:0x7f00b66eda40], txn-recover: Set global recovery timestamp: 0
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.080+0000 I CONTROL  [initandlisten]
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.080+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.080+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.080+0000 I CONTROL  [initandlisten]
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.080+0000 I CONTROL  [initandlisten]
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.081+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. 
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.081+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.081+0000 I CONTROL  [initandlisten]
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.086+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.087+0000 I NETWORK  [initandlisten] listening via socket bound to 0.0.0.0
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.087+0000 I NETWORK  [initandlisten] listening via socket bound to /tmp/mongodb-27017.sock
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.087+0000 I NETWORK  [initandlisten] waiting for connections on port 27017
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.093+0000 I NETWORK  [listener] connection accepted from 172.24.0.3:34922 #1 (1 connection now open)
+a433-microservices-item-db-1   | 2023-10-31T10:09:29.098+0000 I NETWORK  [conn1] received client metadata from 172.24.0.3:34922 conn1: { driver: { name: "nodejs", version: "2.2.36" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "5.15.90.1-microsoft-standard-WSL2" }, platform: "Node.js v14.21.3, LE, mongodb-core: 2.1.20" }
