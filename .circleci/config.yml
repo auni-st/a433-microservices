@@ -42,7 +42,7 @@ jobs:
 
   build-app-karsajobs:
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/docker
     steps:
       - checkout
       # - setup_remote_docker:
