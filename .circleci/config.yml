@@ -12,30 +12,24 @@ version: 2.1
 
 jobs:
   lint-dockerfile:
-    docker:
-      - image: circleci/node:14
     # docker:
     #   - image: hadolint:latest
     steps:
       - checkout
-      # - run:
-      #     name: Lint Dockerfile
-      #     command: hadolint ../Dockerfile
       - run:
-          name: Hello World!
-          command: echo "Hello World!"
+          name: Install hadolint
+          command: |
+            wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+            chmod +x /bin/hadolint
+      - run:
+          name: Lint Dockerfile
+          command: hadolint Dockerfile
 
   test-app:
     docker:
       - image: circleci/golang:1.15
     steps:
       - checkout
-      # - run:
-      #     name: Install sudo
-      #     command: sudo apt-get update 
-      # - run:
-      #     name: Install GCC
-      #     command: sudo apt-get install -y gcc
       - run:
           name: Backend Unit Tests
           command: go test -v -short --count=1 $(go list ./...)
@@ -51,11 +45,9 @@ jobs:
           name: Build and Push Docker Image
           command: |
             docker build -t ahmadauni/karsajobs:latest .
-            docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobsss:v2
-            # docker login ghcr.io -u auni-st -p ${{ env.TOKEN_GITHUB_PACKAGES }}
-            # docker login --username auni-st --password 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 ghcr.io
-            # echo "ara5467890" | docker login -u "ahmadauni" --password-stdin
-            docker push ghcr.io/auni-st/ahmadauni/karsajobsss:v2
+            docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobs:latest
+            docker login --username auni-st --password ${{ env.TOKEN_GITHUB_PACKAGES }}
+            docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
 
 workflows:
   version: 2
