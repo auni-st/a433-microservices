@@ -1,10 +1,43 @@
 version: 2.1
+
 jobs:
-  build:
+  lint-dockerfile:
     docker:
       - image: circleci/node:14
     steps:
       - checkout
       - run:
-          name: Hello, World FOR FRONTEND
-          command: echo "Hello, World! AGAIN!!! --FRONTEND"
+          name: Install hadolint
+          command: |
+            sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+            sudo chmod +x /bin/hadolint
+      - run:
+          name: Lint Dockerfile
+          command: hadolint Dockerfile
+
+  build-app-karsajobs-ui:
+    docker:
+      - image: docker:20.10
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.11
+      - run:
+          name: Build and Push Docker Image
+          command: |
+            docker build -t ahmadauni/karsajobs:latest .
+            docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobs:latest
+            docker login --username auni-st --password ${{ env.TOKEN_GITHUB_PACKAGES }}
+            docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
+
+workflows:
+  version: 2
+  lint-test-and-build:
+    jobs:
+      - lint-dockerfile
+      - test-app:
+          requires:
+            - lint-dockerfile
+      - build-app-karsajobs:
+          requires:
+            - test-app
