@@ -13,7 +13,7 @@ version: 2.1
 jobs:
   lint-dockerfile:
     docker:
-      - image: hadolint/hadolint:latest
+      - image: hadolint/hadolint:v2.7.0
     steps:
       - checkout
       - run:
@@ -43,7 +43,7 @@ jobs:
             docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobs:latest
             echo $TOKEN_GITHUB_PACKAGES | docker login ghcr.io -u auni-st --password-stdin
             docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
-            
+
 workflows:
   version: 2
   lint-test-and-build:
