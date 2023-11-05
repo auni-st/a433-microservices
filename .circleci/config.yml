@@ -27,7 +27,7 @@ jobs:
 
   test-app:
     docker:
-      - image: golang:1.15-alpine
+      - image: circleci/golang:1.15-alpine
     steps:
       - checkout
       # - run:
