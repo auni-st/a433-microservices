@@ -25,11 +25,11 @@ jobs:
       - run:
           name: Build and Push Docker Image
           command: |
-            docker build -t ahmadauni/karsajobs:latest .
-            docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobs:latest
+            docker build -t ahmadauni/karsajobs-ui:latest .
+            docker tag ahmadauni/karsajobs-ui:latest ghcr.io/auni-st/ahmadauni/karsajobs-ui:latest
             docker login --username auni-st --password ${{ env.TOKEN_GITHUB_PACKAGES }}
-            docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
-
+            docker push ghcr.io/auni-st/ahmadauni/karsajobs-ui:latest
+            
 workflows:
   version: 2
   lint-test-and-build:
