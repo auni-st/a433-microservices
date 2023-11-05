@@ -1,10 +1,57 @@
+# version: 2.1
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/node:14
+#     steps:
+#       - checkout
+#       - run:
+#           name: Hello, World!
+#           command: echo "Hello, World! AGAIN!!!"
 version: 2.1
+
 jobs:
-  build:
+  lint-dockerfile:
     docker:
-      - image: circleci/node:14
+      - image: hadolint/hadolint:latest
     steps:
       - checkout
       - run:
-          name: Hello, World!
-          command: echo "Hello, World! AGAIN!!!"
+          name: Lint Dockerfile
+          command: hadolint Dockerfile
+
+  test-app:
+    docker:
+      - image: golang:1.15-alpine
+    steps:
+      - checkout
+      - run:
+          name: Backend Unit Tests
+          command: go test -v -short --count=1 $(go list ./...)
+
+  build-app-karsajobs:
+    docker:
+      - image: docker:20.10
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.11
+      - run:
+          name: Build and Push Docker Image
+          command: |
+            docker build -t ahmadauni/karsajobs:latest .
+            docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobs:latest
+            echo $TOKEN_GITHUB_PACKAGES | docker login ghcr.io -u auni-st --password-stdin
+            docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
+            
+workflows:
+  version: 2
+  lint-test-and-build:
+    jobs:
+      - lint-dockerfile
+      - test-app:
+          requires:
+            - lint-dockerfile
+      - build-app-karsajobs:
+          requires:
+            - test-app
