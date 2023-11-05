@@ -42,11 +42,11 @@ jobs:
 
   build-app-karsajobs:
     docker:
-      - image: circleci/docker
+      - image: docker:20.10
     steps:
       - checkout
-      # - setup_remote_docker:
-      #     version: 20.10.11
+      - setup_remote_docker:
+          version: 20.10.11
       - run:
           name: Build and Push Docker Image
           command: |
