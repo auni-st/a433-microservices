@@ -12,18 +12,18 @@ version: 2.1
 
 jobs:
   lint-dockerfile:
-    # docker:
-    #   - image: circleci/docker@x.y.z
     docker:
-      - image: hadolint/hadolint:latest
+      - image: circleci/node:14
+    # docker:
+    #   - image: hadolint/hadolint:latest
     steps:
       - checkout
-      - run:
-          name: Lint Dockerfile
-          command: hadolint ../Dockerfile
       # - run:
-      #     name: Hello World!
-      #     command: echo "Hello World!"
+      #     name: Lint Dockerfile
+      #     command: hadolint ../Dockerfile
+      - run:
+          name: Hello World!
+          command: echo "Hello World!"
 
   test-app:
     docker:
