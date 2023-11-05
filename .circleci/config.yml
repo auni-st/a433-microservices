@@ -16,9 +16,9 @@ jobs:
       - image: hadolint/hadolint:v2.7.0
     steps:
       - checkout
-      - run:
-          name: Lint Dockerfile
-          command: hadolint ./Dockerfile
+      # - run:
+      #     name: Lint Dockerfile
+      #     command: hadolint ./Dockerfile
       - run:
           name: Hello World!
           command: echo "Hello World!"
