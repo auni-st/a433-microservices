@@ -53,8 +53,8 @@ jobs:
             docker build -t ahmadauni/karsajobs:latest .
             docker tag ahmadauni/karsajobs:latest ghcr.io/auni-st/ahmadauni/karsajobs:latest
             # docker login ghcr.io -u auni-st -p ${{ env.TOKEN_GITHUB_PACKAGES }}
-            echo "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" | docker login ghcr.io -u auni-st --password-stdin 
             # echo "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" | docker login ghcr.io -u auni-st --password-stdin 
+            echo "ara54678" | docker login -u "ahmadauni" --password-stdin
             # docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
 
 workflows:
