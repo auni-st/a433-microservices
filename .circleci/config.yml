@@ -42,11 +42,11 @@ jobs:
 
   build-app-karsajobs:
     docker:
-      - image: docker:20.10
+      - image: docker:24.0
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.11
+          version: 24.0.6
       - run:
           name: Build and Push Docker Image
           command: |
