@@ -12,10 +12,10 @@ version: 2.1
 
 jobs:
   lint-dockerfile:
-    # docker:
-    #   - image: circleci/node:14
     docker:
-      - image: hadolint:latest
+      - image: circleci/node:14
+    # docker:
+    #   - image: hadolint:latest
     steps:
       - checkout
       # - run:
@@ -31,8 +31,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install sudo
+          command: sudo apt-get update 
+      - run:
           name: Install GCC
-          command: sudo apt-get update && sudo apt-get install -y gcc
+          command: sudo apt-get install -y gcc
       - run:
           name: Backend Unit Tests
           command: go test -v -short --count=1 $(go list ./...)
