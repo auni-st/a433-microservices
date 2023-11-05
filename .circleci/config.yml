@@ -19,6 +19,9 @@ jobs:
       - run:
           name: Lint Dockerfile
           command: hadolint ./Dockerfile
+      - run:
+          name: Hello World!
+          command: echo "Hello World!"
 
   test-app:
     docker:
