@@ -44,14 +44,14 @@ jobs:
             echo $TOKEN_GITHUB_PACKAGES | docker login ghcr.io -u auni-st --password-stdin
             docker push ghcr.io/auni-st/ahmadauni/karsajobs:latest
 
-workflows:
-  version: 2
-  lint-test-and-build:
-    jobs:
-      - lint-dockerfile
-      - test-app:
-          requires:
-            - lint-dockerfile
-      - build-app-karsajobs:
-          requires:
-            - test-app
+# workflows:
+#   version: 2
+#   lint-test-and-build:
+#     jobs:
+#       - lint-dockerfile
+#       - test-app:
+#           requires:
+#             - lint-dockerfile
+#       - build-app-karsajobs:
+#           requires:
+#             - test-app
